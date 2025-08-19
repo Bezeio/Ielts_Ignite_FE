@@ -1,0 +1,159 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top navbar-transparent"
+  color-on-scroll="500"
+>
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand" routerLink="/home">
+        <i class="nc-icon nc-bulb-63 mr-1"></i>
+        <span class="brand-text">IELTS Ignite</span>
+      </a>
+      <button
+        class="navbar-toggler navbar-burger"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarToggler"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        (click)="sidebarToggle()"
+      >
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+    </div>
+
+    <div class="navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto">
+        <!-- Main Navigation -->
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">
+            <i class="nc-icon nc-shop mr-1"></i>
+            <span class="nav-text">Home</span>
+            <p class="d-lg-none">Home</p>
+          </a>
+        </li>
+
+        <!-- Dropdown for Courses -->
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <div ngbDropdown class="dropdown" placement="bottom-left">
+            <a class="nav-link" id="coursesDropdown" ngbDropdownToggle>
+              <i class="nc-icon nc-hat-3 mr-1"></i>
+              <span class="nav-text">Courses</span>
+            </a>
+            <div
+              ngbDropdownMenu
+              aria-labelledby="coursesDropdown"
+              class="dropdown-menu"
+            >
+              <a class="dropdown-item" routerLink="/listening">
+                <i class="nc-icon nc-headphones mr-2"></i>Listening
+              </a>
+              <a class="dropdown-item" routerLink="/reading">
+                <i class="nc-icon nc-book-bookmark mr-2"></i>Reading
+              </a>
+              <a class="dropdown-item" routerLink="/writing">
+                <i class="nc-icon nc-paper mr-2"></i>Writing
+              </a>
+              <a class="dropdown-item" routerLink="/speaking">
+                <i class="nc-icon nc-sound-wave mr-2"></i>Speaking
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/practice-tests">
+                <i class="nc-icon nc-settings-tool-66 mr-2"></i>Practice Tests
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">
+            <i class="nc-icon nc-single-02 mr-1"></i>
+            <span class="nav-text">About</span>
+            <p class="d-lg-none">About Us</p>
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active">
+            <i class="nc-icon nc-paper mr-1"></i>
+            <span class="nav-text">Blog</span>
+            <p class="d-lg-none">Blog</p>
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">
+            <i class="nc-icon nc-email-85 mr-1"></i>
+            <span class="nav-text">Contact</span>
+            <p class="d-lg-none">Contact</p>
+          </a>
+        </li>
+
+        <!-- Social Links -->
+        <li class="nav-item social-item" *ngIf="!isDocumentation()">
+          <a
+            class="nav-link social-link"
+            rel="tooltip"
+            title="Follow us on Facebook"
+            data-placement="bottom"
+            href="https://www.facebook.com/"
+            target="_blank"
+          >
+            <i class="fa fa-facebook-square"></i>
+          </a>
+        </li>
+
+        <li class="nav-item social-item" *ngIf="!isDocumentation()">
+          <a
+            class="nav-link social-link"
+            rel="tooltip"
+            title="Follow us on Instagram"
+            data-placement="bottom"
+            href="https://www.instagram.com/"
+            target="_blank"
+          >
+            <i class="fa fa-instagram"></i>
+          </a>
+        </li>
+
+        <!-- CTA Button -->
+        <li class="nav-item cta-item" *ngIf="!isDocumentation()">
+          <a routerLink="/register" class="btn btn-round btn-success">
+            <i class="nc-icon nc-spaceship mr-1"></i>
+            Start Learning
+          </a>
+        </li>
+
+        <!-- Documentation/Components Link -->
+        <li class="nav-item" *ngIf="!isHome()">
+          <a
+            [routerLink]="['/home']"
+            *ngIf="!isDocumentation()"
+            class="nav-link"
+          >
+            <i class="nc-icon nc-layout-11 mr-1"></i>Components
+          </a>
+          <a
+            [routerLink]="['/home']"
+            *ngIf="isDocumentation()"
+            class="nav-link"
+          >
+            Back to Kit
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="isDocumentation()">
+          <a
+            href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local"
+            target="_blank"
+            class="nav-link"
+          >
+            Have an issue
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
