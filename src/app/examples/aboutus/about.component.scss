@@ -1,0 +1,180 @@
+// About Component Styles
+
+// Variables
+$primary-color: #f96332;
+$info-color: #2ca8ff;
+$success-color: #18ce0f;
+$warning-color: #ffb236;
+$danger-color: #f96332;
+$dark-color: #2c2c2c;
+$light-gray: #f8f9fa;
+
+// General Section Styling
+.section {
+  padding: 120px 0;
+
+  &.section-dark {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+    .title,
+    .info-title,
+    .card-title {
+      color: white;
+    }
+
+    .description {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &.section-buttons {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+}
+
+// Introduction Section
+.tim-title {
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $light-gray;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// Info Cards
+.info {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+
+    &.icon-primary {
+      background: linear-gradient(135deg, $primary-color 0%, #ff6b35 100%);
+      color: white;
+    }
+
+    &.icon-info {
+      background: linear-gradient(135deg, $info-color 0%, #00d4ff 100%);
+      color: white;
+    }
+
+    &.icon-success {
+      background: linear-gradient(135deg, $success-color 0%, #5cb85c 100%);
+      color: white;
+    }
+
+    &.icon-warning {
+      background: linear-gradient(135deg, $warning-color 0%, #ffc107 100%);
+      color: white;
+    }
+
+    &.icon-danger {
+      background: linear-gradient(135deg, $danger-color 0%, #dc3545 100%);
+      color: white;
+    }
+
+    &.icon-circle {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    i {
+      font-size: inherit;
+    }
+  }
+
+  &:hover .icon {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .info-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $dark-color;
+  }
+
+  h3.info-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+  }
+}
+
+// Core Values Cards
+.card-plain {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-header {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-body {
+    padding: 0;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $dark-color;
+  }
+
+  .card-description {
+    color: #666;
+    line-height: 1.5;
+  }
+}
+
+// Service Cards
+.service-card {
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}

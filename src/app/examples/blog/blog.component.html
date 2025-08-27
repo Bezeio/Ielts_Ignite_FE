@@ -1,0 +1,227 @@
+<div class="wrapper">
+  <!-- Hero Header Section -->
+  <div
+    class="page-header section-dark"
+    style="background-image: url('assets/img/blog-header.jpg')"
+  >
+    <div
+      class="moving-clouds"
+      style="background-image: url('assets/img/clouds.png')"
+    ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h1 class="title">TechBlog</h1>
+          <h4>Khám phá công nghệ và đổi mới</h4>
+          <p class="description">
+            Nơi chia sẻ kiến thức, kinh nghiệm và xu hướng công nghệ mới nhất
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Featured Posts Carousel -->
+    <div class="section" id="featured-carousel">
+      <div class="container">
+        <div class="tim-title text-center">
+          <h2>Bài viết nổi bật</h2>
+          <p>Những bài viết được quan tâm và đánh giá cao nhất</p>
+        </div>
+        <div class="row">
+          <div class="col-md-10 mr-auto ml-auto">
+            <div class="card page-carousel">
+              <ngb-carousel
+                [showNavigationArrows]="true"
+                [showNavigationIndicators]="true"
+              >
+                <ng-template ngbSlide *ngFor="let post of featuredPosts">
+                  <div class="carousel-slide">
+                    <img
+                      [src]="post.imageUrl"
+                      [alt]="post.title"
+                      class="carousel-image"
+                    />
+                    <div class="carousel-caption">
+                      <div class="carousel-content">
+                        <span
+                          class="label"
+                          [ngClass]="'label-' + getCategoryColor(post.category)"
+                        >
+                          {{ post.category }}
+                        </span>
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.excerpt }}</p>
+                        <div class="post-meta">
+                          <small>
+                            <i class="nc-icon nc-single-02"></i>
+                            {{ post.author }} •
+                            <i class="nc-icon nc-time-alarm"></i>
+                            {{ post.readTime }} phút đọc
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="section section-buttons" id="search-filter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="tim-title">
+              <h3>Tìm kiếm bài viết</h3>
+            </div>
+            <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus === true }"
+            >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nhập từ khóa tìm kiếm..."
+                [(ngModel)]="searchQuery"
+                (input)="onSearch()"
+                (focus)="focus = true"
+                (blur)="focus = false"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-zoom-split"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tim-title">
+              <h3>Danh mục</h3>
+            </div>
+            <div class="category-buttons">
+              <button
+                *ngFor="let category of categories"
+                type="button"
+                class="btn btn-round"
+                [ngClass]="
+                  selectedCategory === category.name
+                    ? 'btn-' + category.color
+                    : 'btn-outline-' + category.color
+                "
+                (click)="selectCategory(category.name)"
+              >
+                {{ category.name === "all" ? "Tất cả" : category.name }}
+                <span class="badge badge-light">{{ category.count }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="section" id="blog-posts">
+      <div class="container">
+        <div class="tim-title text-center">
+          <h2>Bài viết mới nhất</h2>
+          <p>Cập nhật những kiến thức và xu hướng công nghệ mới nhất</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6" *ngFor="let post of paginatedPosts">
+            <div class="card blog-card">
+              <div class="card-header card-header-image">
+                <img
+                  [src]="post.imageUrl"
+                  [alt]="post.title"
+                  class="blog-image"
+                />
+                <div class="card-overlay">
+                  <span
+                    class="label"
+                    [ngClass]="'label-' + getCategoryColor(post.category)"
+                  >
+                    {{ post.category }}
+                  </span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <p class="card-description">{{ post.excerpt }}</p>
+                <div class="post-meta">
+                  <small class="text-muted">
+                    <i class="nc-icon nc-single-02"></i> {{ post.author }}<br />
+                    <i class="nc-icon nc-time-alarm"></i>
+                    {{ formatDate(post.date) }} • {{ post.readTime }} phút
+                  </small>
+                </div>
+                <div class="post-tags">
+                  <span class="tag" *ngFor="let tag of post.tags"
+                    >#{{ tag }}</span
+                  >
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger btn-round">
+                  <i class="nc-icon nc-book-bookmark"></i> Đọc thêm
+                </button>
+                <div class="pull-right">
+                  <button type="button" class="btn btn-link btn-neutral">
+                    <i class="nc-icon nc-favourite-28"></i>
+                  </button>
+                  <button type="button" class="btn btn-link btn-neutral">
+                    <i class="nc-icon nc-send"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- No posts found -->
+        <div *ngIf="paginatedPosts.length === 0" class="row">
+          <div class="col-12 text-center">
+            <div class="empty-state">
+              <i
+                class="nc-icon nc-zoom-split"
+                style="font-size: 4rem; opacity: 0.3"
+              ></i>
+              <h3>Không tìm thấy bài viết</h3>
+              <p>Thử thay đổi từ khóa tìm kiếm hoặc danh mục khác</p>
+              <button
+                type="button"
+                class="btn btn-primary btn-round"
+                (click)="searchQuery = ''; selectCategory('all')"
+              >
+                Xem tất cả bài viết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div *ngIf="totalPages > 1" class="row">
+          <div class="col-12">
+            <div class="pagination-wrapper text-center">
+              <ngb-pagination
+                [collectionSize]="filteredPosts.length"
+                [(page)]="currentPage"
+                [pageSize]="postsPerPage"
+                [maxSize]="5"
+                [rotate]="true"
+                [boundaryLinks]="true"
+              >
+              </ngb-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<div class="main">
+  <!-- Company Introduction Section -->
+  <div class="section section-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <div class="tim-title">
+            <h2>Về chúng tôi</h2>
+            <h3>TechBlog - Đối tác công nghệ đáng tin cậy</h3>
+            <p class="description">
+              Chúng tôi là một đội ngũ đam mê công nghệ, cam kết mang đến những
+              giải pháp công nghệ tiên tiến và dịch vụ chất lượng cao nhất cho
+              khách hàng. Với kinh nghiệm nhiều năm trong lĩnh vực phát triển
+              phần mềm và tư vấn công nghệ, chúng tôi tự hào là đối tác đáng tin
+              cậy của hàng trăm doanh nghiệp trên toàn quốc.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info">
+            <div class="icon icon-primary">
+              <i class="nc-icon nc-bulb-63"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">Sứ mệnh</h4>
+              <p>
+                Chúng tôi tin rằng công nghệ có thể thay đổi thế giới. Sứ mệnh
+                của chúng tôi là giúp các doanh nghiệp khai thác sức mạnh của
+                công nghệ để phát triển bền vững và tạo ra giá trị cho xã hội.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info">
+            <div class="icon icon-info">
+              <i class="nc-icon nc-planet"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">Tầm nhìn</h4>
+              <p>
+                Trở thành công ty công nghệ hàng đầu khu vực, được khách hàng
+                tin tưởng và đối tác đánh giá cao. Chúng tôi hướng tới việc xây
+                dựng một hệ sinh thái công nghệ hoàn chỉnh và bền vững.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Thành tựu của chúng tôi</h2>
+          <p class="description">
+            Những con số ấn tượng thể hiện sự tin tưởng và thành công mà chúng
+            tôi đã đạt được
+          </p>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let stat of statistics">
+          <div
+            class="info text-center"
+            (mouseenter)="onStatisticHover(statistics.indexOf(stat))"
+          >
+            <div class="icon" [ngClass]="'icon-' + stat.color">
+              <i [class]="stat.icon"></i>
+            </div>
+            <h3 class="info-title">{{ stat.value }}</h3>
+            <p class="description">{{ stat.label }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="section section-dark">
+    <div class="container">
+      <div class="tim-title text-center">
+        <h2>Đội ngũ của chúng tôi</h2>
+        <p>
+          Những con người tài năng đằng sau những sản phẩm công nghệ xuất sắc
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6" *ngFor="let member of teamMembers">
+          <div class="card team-card">
+            <div class="card-header card-header-image">
+              <img
+                [src]="member.imageUrl"
+                [alt]="member.name"
+                class="team-avatar"
+              />
+            </div>
+            <div class="card-body text-center">
+              <h4 class="card-title">{{ member.name }}</h4>
+              <h6 class="category text-primary">{{ member.position }}</h6>
+              <p class="card-description">{{ member.description }}</p>
+
+              <!-- Skills -->
+              <div class="skills-section">
+                <small class="text-muted">Chuyên môn:</small>
+                <div class="skills-tags">
+                  <span class="skill-tag" *ngFor="let skill of member.skills">
+                    {{ skill }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <div class="social-links">
+                <a
+                  *ngFor="let link of member.socialLinks | keyvalue"
+                  [href]="link.value"
+                  class="btn btn-just-icon"
+                  [ngClass]="getSocialColor(link.key)"
+                  target="_blank"
+                >
+                  <i [class]="getSocialIcon(link.key)"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact CTA Section -->
+
+</div>
